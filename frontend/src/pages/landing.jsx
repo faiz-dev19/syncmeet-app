@@ -32,7 +32,7 @@ export default function LandingPage() {
           </div>
         </div>
         <div className='png'>
-          <img src="../public/phone2-removebg-preview.png" alt="image" />
+          <img src="/phone2-removebg-preview.png" alt="image" />
         </div>
       </div>
       
