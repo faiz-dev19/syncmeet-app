@@ -1,0 +1,410 @@
+
+/* ===== GLOBAL ===== */
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  min-height: 100vh;
+  background: rgb(1,4,48);
+  color: white;
+  font-family: sans-serif;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ===== LOBBY ===== */
+
+.lobby {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* ===== CARD ===== */
+
+.card {
+  background: #1c1c1c;
+  padding: 25px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* ===== PREVIEW ===== */
+
+.preview {
+  width: 100%;
+  height: 220px;
+  background: black;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* ===== INPUT ===== */
+
+.input {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  outline: none;
+  font-size: 15px;
+}
+
+/* ===== BUTTON ===== */
+
+.btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #1d4ed8;
+}
+
+/* ===== MEETING ===== */
+
+.meeting {
+  min-height: 100vh;
+  height: auto;
+  padding: 10px;
+  padding-bottom: 120px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== VIDEO GRID ===== */
+
+.videoGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+  width: 100%;
+  flex: 1;
+}
+
+/* ===== VIDEO CARD ===== */
+
+.videoWrapper {
+  position: relative;
+  width: 100%;
+  background: black;
+  border-radius: 10px;
+  overflow: hidden;
+
+  /* IMPORTANT CHANGE */
+  height: 100%;
+  min-height: 160px;
+}
+
+/* ===== VIDEO ===== */
+
+.videoWrapper video {
+  width: 100%;
+  height: 100%;
+
+  /* IMPORTANT: use contain NOT cover for mobile fix */
+  object-fit: contain;
+  background: black;
+}
+@media (max-width: 480px) {
+  .videoGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .videoWrapper {
+    min-height: 220px;
+  }
+
+  .videoWrapper video {
+    object-fit: contain;
+  }
+}
+@media (max-width: 768px) {
+  .videoGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1200px) {
+  .videoGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ===== USER NAME ===== */
+
+.videoWrapper {
+  position: relative;
+  background: #1c1c1c;
+  border-radius: 12px;
+  overflow: hidden;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: flex;
+}
+.videoWrapper video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+@media (max-width: 480px) {
+  .videoGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .videoWrapper {
+    aspect-ratio: 16 / 9;
+  }
+
+  .videoWrapper video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+/* ===== MY VIDEO ===== */
+
+.myVideo {
+  position: fixed;
+  bottom: 90px;
+  left: 15px;
+  width: 220px;
+  height: 160px;
+  background: black;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 2px solid white;
+  z-index: 100;
+}
+/* @media (max-width: 480px) {
+  .myVideo {
+    width: 100px;
+    height: 75px;
+    bottom: 85px;
+    left: 10px;
+  } */
+/* } */
+
+.myVideo video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.myVideo span {
+  position: absolute;
+  bottom: 5px;
+  right: 6px;
+  font-size: 10px;
+  background: rgba(0,0,0,0.6);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* ===== CONTROLS ===== */
+
+.controls {
+  position: fixed;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(20,20,20,0.75);
+  padding: 10px 14px;
+  border-radius: 40px;
+  backdrop-filter: blur(10px);
+  z-index: 200;
+  flex-wrap: wrap;
+  max-width: 95%;
+}
+
+/* @media (max-width: 480px) {
+  .controls {
+    gap: 6px;
+    padding: 8px;
+    border-radius: 16px;
+  }
+} */
+
+/* ===== CONTROL BUTTON ===== */
+
+.controlBtn {
+  background: #1f2937 !important;
+  color: white !important;
+  transition: 0.2s !important;
+}
+
+.controlBtn:hover {
+  background: #374151 !important;
+}
+
+.controlBtn svg {
+  font-size: 24px;
+}
+
+/* ===== CHAT BADGE ===== */
+
+.chatWrapper {
+  position: relative;
+}
+
+.badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  background: #ef4444;
+  color: white;
+  font-size: 10px;
+  min-width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ========================= */
+/* ===== RESPONSIVE ======== */
+/* ========================= */
+
+/* TABLET */
+
+@media (max-width: 768px) {
+
+  .meeting {
+    padding: 12px;
+    padding-bottom: 140px;
+  }
+
+  .videoGrid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+  }
+
+  .videoWrapper video {
+    height: 200px;
+  }
+
+  .myVideo {
+    width: 170px;
+    height: 120px;
+    bottom: 85px;
+    right: 10px;
+  }
+
+  .controls {
+    gap: 10px;
+    padding: 10px 14px;
+  }
+
+  .controlBtn svg {
+    font-size: 22px;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 480px) {
+
+  .card {
+    padding: 18px;
+  }
+
+  .preview {
+    height: 180px;
+  }
+
+  .videoGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .videoWrapper video {
+    height: 220px;
+  }
+
+  .myVideo {
+    width: 120px;
+    height: 90px;
+    bottom: 80px;
+    right: 8px;
+  }
+
+  .controls {
+    width: 95%;
+    justify-content: center;
+    gap: 8px;
+    padding: 8px 10px;
+    border-radius: 18px;
+  }
+
+  .controlBtn svg {
+    font-size: 20px;
+  }
+
+  .videoWrapper span {
+    font-size: 11px;
+  }
+
+  .btn {
+    font-size: 14px;
+  }
+
+  .input {
+    font-size: 14px;
+  }
+}
+.chatRoom {
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100vh;
+  background: white;
+  width: 350px;
+  max-width: 100%;
+  padding: 15px;
+  color: black;
+  z-index: 500;
+  display: flex;
+  flex-direction: column;
+}
+.chatContainer {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.chattingArea {
+  position: sticky;
+  bottom: 0;
+  background: white;
+  padding-top: 10px;
+}
+@media (max-width: 480px) {
+  .chatRoom {
+    width: 100%;
+  }
+}
+@media (max-width: 480px) {
+  .videoWrapper video {
+    height: 200px;
+  }
+}
